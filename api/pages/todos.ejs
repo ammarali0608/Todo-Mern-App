@@ -1,0 +1,20 @@
+<!-- collection.ejs -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Collection Page</title>
+  </head>
+  <body>
+    <h1>Collection Data</h1>
+    <ul>
+      <% collectionData.forEach(function(row) { %>
+      <li>
+        <!-- Display the desired fields from the row -->
+        <p>Field 1: <%= row.id %></p>
+        <p>Field 2: <%= row.text %></p>
+        <!-- Add more fields as needed -->
+      </li>
+      <% }); %>
+    </ul>
+  </body>
+</html>
