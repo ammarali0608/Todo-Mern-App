@@ -5,11 +5,13 @@ POST http://localhost:3002/todo/new
 Content-Type: application/json
 
 {
-    "text": "i am the Two"
+    "text": "Get the milk"
 }
 
 ###
 DELETE http://localhost:3002/todo/delete/649343fe56df36dc523e3cf2
 
-# delete all rows request
+###
+
+PUT http://localhost:3002/todo/complete/6494118341ff5dc6ec62758b
 

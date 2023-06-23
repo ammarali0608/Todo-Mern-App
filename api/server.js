@@ -45,14 +45,38 @@ app.get("/addData", (req, res) => {
   res.render(path.join(__dirname, "pages", "addTodo.ejs"));
   console.log(req.body);
 });
+app.post("/todo/new", (req, res) => {
+  const todo = new Todo({
+    text: req.body.text,
+  });
+
+  todo.save();
+
+  res.json(todo);
+});
 
 app.delete("/todo/delete/:id", async (req, res) => {
   const result = await Todo.findByIdAndDelete(req.params.id);
   res.json(result);
 });
 
+app.get("/todo/complete/:id", async (req, res) => {
+  const todo = await Todo.findByIdAndUpdate(req.params.id);
+  todo.complete = !todo.complete;
+  todo.save();
+  res.json(todo);
+});
 // show files whose name is ammar
 
+app.put("/todo/update/:id", async (req, res) => {
+  const todo = await Todo.findById(req.params.id);
+
+  todo.text = req.body.text;
+
+  todo.save();
+
+  res.json(todo);
+});
 app.listen(3002, () => {
   console.log("Server is running on port 3002");
 });
